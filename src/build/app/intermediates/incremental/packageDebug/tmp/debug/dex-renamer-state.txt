@@ -1,0 +1,4 @@
+#Wed Feb 12 22:40:53 KST 2020
+base.0=/Users/yskim/programming/flutter-study/my_app/src/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
