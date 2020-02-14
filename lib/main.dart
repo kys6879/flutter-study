@@ -29,46 +29,65 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "첫 Stateful App",
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("내 Stateful Widget!"),
-          ),
-          body: Container(
-            child: Column(
-              children: <Widget>[
-                Text(
-                  '$count',
-                  style: TextStyle(fontSize: 160.0),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    RaisedButton(
-                      child: Text(
-                        "플러스",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Colors.red,
-                      onPressed: () {
-                        plusCount();
-                      },
-                    ),
-                    RaisedButton(
-                      child: Text(
-                        "마이나스",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Colors.blue,
-                      onPressed: () {
-                        minusCount();
-                      },
-                    )
-                  ],
-                )
-              ],
+        title: "첫 Stateful App",
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("계산기!"),
             ),
-          )),
+            body: Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "$count",
+                    style: TextStyle(fontSize: 80.0),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          btnWidget("7"),
+                          btnWidget("8"),
+                          btnWidget("9"),
+                          btnWidget("x")
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          btnWidget("4"),
+                          btnWidget("5"),
+                          btnWidget("6"),
+                          btnWidget("-")
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          btnWidget("1"),
+                          btnWidget("2"),
+                          btnWidget("3"),
+                          btnWidget("+")
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )));
+  }
+
+  Widget btnWidget(var text) {
+    return ButtonTheme(
+      minWidth: 80.0,
+      height: 50.0,
+      child: RaisedButton(
+        child: Text("$text"),
+      ),
     );
   }
 }
