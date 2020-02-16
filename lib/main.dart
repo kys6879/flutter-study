@@ -1,77 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'cupertino_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
-        padding: EdgeInsets.all(32),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      "Oeschinen Lake Campground",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Text(
-                    'Kandersteg, Switzerland',
-                    style: TextStyle(color: Colors.grey[500]),
-                  )
-                ],
-              ),
-            ),
-            Icon(
-              Icons.star,
-              color: Colors.red[500],
-            ),
-            Text("41")
-          ],
-        ));
-
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonsection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildButtonColumn(color, Icons.call, 'CALL'),
-          _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-          _buildButtonColumn(color, Icons.share, 'SHARE'),
-        ],
-      ),
-    );
-
     return MaterialApp(
-      title: "fultter",
-      home: Scaffold(
-          appBar: AppBar(title: Text('layout')),
-          body: Column(
-            children: <Widget>[titleSection, buttonsection],
-          )),
+        title: "Flutter",
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: HelloPage('This is Title'));
+    // home: CupertinoPage());
+  }
+}
+
+class HelloPage extends StatefulWidget {
+  final String title;
+
+  HelloPage(this.title);
+
+  @override
+  HelloPageState createState() => HelloPageState();
+}
+
+class HelloPageState extends State<HelloPage> {
+  String _message = 'Hello world!';
+  int count = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        // onPressed: () => _changeMessage('!!!!'),
+        onPressed: () => plusCount(),
+      ),
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              this._message,
+              style: TextStyle(fontSize: 32),
+            ),
+            Text(count.toString(), style: TextStyle(fontSize: 28)),
+            RaisedButton(
+              child: Text("move display"),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CupertinoPage()));
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Icon(icon, color: color),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(label,
-              style: TextStyle(
-                  fontSize: 12, fontWeight: FontWeight.w400, color: color)),
-        )
-      ],
-    );
+  plusCount() {
+    setState(() {
+      this.count++;
+    });
   }
 }
