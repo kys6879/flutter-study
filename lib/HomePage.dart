@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/ProfilePage.dart';
+import 'package:my_app/WritePage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage();
@@ -12,8 +14,8 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _widgetOptions = <Widget>[
     Text('게시판 메뉴입니다.'),
-    Text('글쓰기 메뉴입니다.'),
-    Text('내정보 메뉴입니다.')
+    WritePage(),
+    ProfilePage()
   ];
 
   void _onItemTapped(int index) {
