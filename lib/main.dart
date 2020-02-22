@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './HomePage.dart';
+import 'package:my_app/TodoList.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: "Flutter",
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: HomePage());
+        home: TodoList());
     // home: CupertinoPage());
   }
 }
