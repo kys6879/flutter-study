@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {
-  static String APP_BAR_TITLE = 'FirstScreen!!!';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(APP_BAR_TITLE),
+        title: Text('FirstScreen'),
       ),
       body: Center(
         child: RaisedButton(
