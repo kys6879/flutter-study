@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
+
 
 class TodoList extends StatefulWidget {
   @override
@@ -52,7 +54,7 @@ class _TodoListState extends State<TodoList> {
   }
 
   void _promptRemoveTodoItem(int index) {
-    print(index);
+    developer.log(index);
     showDialog(
         context: context,
         builder: (BuildContext context) {
